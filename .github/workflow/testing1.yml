@@ -1,0 +1,18 @@
+name: Lint, Test & Deploy
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run Lint
+      - name: Test
+        run: npm run Test
+      - name: build code
+        run: npm run build
+      - name: deploy code
+        run: echo "Deploying..."
